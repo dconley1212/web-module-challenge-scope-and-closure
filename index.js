@@ -96,8 +96,8 @@ Use the getInningScore() function below to do the following:
 
 function getInningScore(inning) {
   return {
-    home: inning(),
-    away: inning(),
+    Away: inning(),
+    Home: inning(),
   };
 }
 
