@@ -92,8 +92,8 @@ function finalScore(inning, numberOfInningsPlayed) {
   finalTotalScore.Away = awayScore;
 
   for (let i = 0; i < numberOfInningsPlayed; i++) {
-    let awayScore = awayScore + inning;
-    let homeScore = homeScore + inning;
+    awayScore += inning;
+    homeScore += inning;
   }
 
   return finalTotalScore;
@@ -153,8 +153,36 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(getInningScore, inning) {}
+function scoreboard(getInningScore, inning, numberOfInningsPlayed) {
+  /* going to be returning an array with index values of the scores from each inning */
+  const eachInningScore = [];
 
+  let awayTeamScore = 0;
+  let homeTeamScore = 0;
+
+  for (let i = 0; i < numberOfInningsPlayed; i++) {
+    const { Away, Home } = getInningScore(inning);
+
+    awayTeamScore += Away;
+    homeTeamScore += Home;
+
+    let eachInningString = `Inning ${i + 1}: Away ${Away} - Home ${Home}`;
+    eachInningScore.push(eachInningString);
+  }
+
+  if (awayTeamScore === homeTeamScore) {
+    eachInningScore.push(
+      `This game will require extra innings: Away ${awayTeamScore} - ${homeTeamScore}`
+    );
+  } else {
+    eachInningScore.push(
+      `Final Score: Away ${awayTeamScore} - ${homeTeamScore}`
+    );
+  }
+
+  return eachInningScore;
+}
+console.log(scoreboard(getInningScore, inning, 9));
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
   console.log("its working");
