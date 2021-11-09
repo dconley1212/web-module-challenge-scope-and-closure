@@ -84,11 +84,22 @@ Use the finalScore function below to do the following:
 */
 
 function finalScore(inning, numberOfInningsPlayed) {
-  const finalTotalScore = {
-    Home: finalHomeScore,
-    Away: finalAwayscore,
-  };
+  const finalTotalScore = {};
+
+  let awayScore = 0;
+  let homeScore = 0;
+  finalTotalScore.Home = homeScore;
+  finalTotalScore.Away = awayScore;
+
+  for (let i = 0; i < numberOfInningsPlayed; i++) {
+    let awayScore = awayScore + inning;
+    let homeScore = homeScore + inning;
+  }
+
+  return finalTotalScore;
 }
+
+console.log(finalScore(inning, 9));
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
